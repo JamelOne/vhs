@@ -12,6 +12,9 @@ public class Moviment : MonoBehaviour
     private bool onGround;
     private bool isDead = false;
     private bool facingRight = true;
+    
+    private float currentSpeed;
+    public float minHeight,maxHeight;
 
     [SerializeField]
      private float velocidade = 0;
@@ -27,7 +30,7 @@ public class Moviment : MonoBehaviour
     {
         rb = GetComponent<Rigidbody>();
         groundCheck = gameObject.transform.Find("GroundCheck");
-        
+        currentSpeed = velocidade;
     }
 
     // Update is called once per frame
@@ -45,7 +48,7 @@ public class Moviment : MonoBehaviour
             
         horizontal = Input.GetAxis("Horizontal");
         vertical = Input.GetAxis("Vertical");
-        rb.velocity = new Vector3(horizontal*velocidade,rb.velocity.y,vertical*velocidade);
+        rb.velocity = new Vector3(horizontal*currentSpeed,rb.velocity.y,vertical*currentSpeed);
         
         }
 
@@ -63,7 +66,11 @@ public class Moviment : MonoBehaviour
             jump=false;
             rb.AddForce(Vector3.up*jumpForce);
         }
-        
+        float minWidth = Camera.main.ScreenToWorldPoint(new Vector3(0,0,10)).x;
+        float maxWidth = Camera.main.ScreenToWorldPoint(new Vector3(Screen.width,0,10)).x;
+        rb.position = new Vector3(Mathf.Clamp(rb.position.x,minWidth + 1,maxWidth - 1),
+            rb.position.y,
+            Mathf.Clamp(rb.position.z,minHeight + 1,maxHeight - 1));
     }
 
     private void Flip(){
@@ -71,5 +78,13 @@ public class Moviment : MonoBehaviour
         Vector3 scale = transform.localScale;
         scale.x*= -1;
         transform.localScale = scale;
+    }
+
+    void ZeroSpeed(){
+        currentSpeed=0;
+    }
+
+    void ResetSpeed(){
+        currentSpeed=velocidade;
     }
 }
