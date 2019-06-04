@@ -323,7 +323,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1493601294}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -2.3, y: -0.32, z: -3.6}
+  m_LocalPosition: {x: -5.82, y: -0.32, z: -3.6}
   m_LocalScale: {x: 5, y: 5, z: 5}
   m_Children:
   - {fileID: 1291472953}
@@ -344,7 +344,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   minHeight: -9
   maxHeight: -0.5
-  velocidade: 8
+  velocidade: 6
   jumpForce: 300
 --- !u!54 &1493601299
 Rigidbody:
