@@ -8,8 +8,7 @@ public class MenuControl : MonoBehaviour
     public string nextScene;
     
     public void changeScene () {
-        Debug.Log(nextScene);
-        //SceneManager.LoadScene(nextScene);
+        SceneManager.LoadScene("Jogo");
     }
 
     public void quitApplication () {

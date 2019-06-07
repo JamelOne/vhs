@@ -203,6 +203,50 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 30, y: 0, z: 0}
+--- !u!1 &1217547313
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1217547315}
+  - component: {fileID: 1217547314}
+  m_Layer: 0
+  m_Name: Attack
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!65 &1217547314
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1217547313}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1.4831452, y: 0.5813885, z: 0.91678977}
+  m_Center: {x: -4.550928, y: 0.5186782, z: -0.09371245}
+--- !u!4 &1217547315
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1217547313}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 1.164, y: 0.064, z: 0}
+  m_LocalScale: {x: 0.2, y: 0.2, z: 0.2}
+  m_Children: []
+  m_Father: {fileID: 1493601297}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1291472952
 GameObject:
   m_ObjectHideFlags: 0
@@ -231,7 +275,7 @@ Transform:
   m_LocalScale: {x: 0.22288333, y: 0.25994807, z: 0.05971267}
   m_Children: []
   m_Father: {fileID: 1493601297}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1493601294
 GameObject:
@@ -263,10 +307,10 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  m_Radius: 0.14127609
-  m_Height: 0.6374594
+  m_Radius: 0.13206926
+  m_Height: 0.66750413
   m_Direction: 1
-  m_Center: {x: 0.013429403, y: 0.016963387, z: 0}
+  m_Center: {x: 0.013429403, y: 0.0019410134, z: -0.009206819}
 --- !u!212 &1493601296
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -326,6 +370,7 @@ Transform:
   m_LocalPosition: {x: -5.82, y: -0.32, z: -3.6}
   m_LocalScale: {x: 5, y: 5, z: 5}
   m_Children:
+  - {fileID: 1217547315}
   - {fileID: 1291472953}
   m_Father: {fileID: 0}
   m_RootOrder: 2

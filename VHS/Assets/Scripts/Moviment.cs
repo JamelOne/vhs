@@ -18,10 +18,7 @@ public class Moviment : MonoBehaviour
 
     [SerializeField]
      private float velocidade = 0;
-     private bool jump = false;
-
-     [SerializeField]
-     public float jumpForce = 400;
+    
     float horizontal;
     float vertical;
 
@@ -29,6 +26,7 @@ public class Moviment : MonoBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody>();
+        //anim = GetComponent<Animator>();
         groundCheck = gameObject.transform.Find("GroundCheck");
         currentSpeed = velocidade;
     }
@@ -38,8 +36,9 @@ public class Moviment : MonoBehaviour
     void Update(){
 
         onGround = Physics.Linecast(transform.position, groundCheck.position, 1<<LayerMask.NameToLayer("Ground"));
-        if(Input.GetButtonDown("Jump") && onGround){
-            jump=true;
+        if(Input.GetButtonDown("Fire1")){
+            Debug.Log("Atacando");
+            //anim.SetTrigger("Attack");
         }
     }
     private void FixedUpdate(){
@@ -62,10 +61,8 @@ public class Moviment : MonoBehaviour
                 Flip();
             }
         }
-        if(jump){
-            jump=false;
-            rb.AddForce(Vector3.up*jumpForce);
-        }
+       
+        
         float minWidth = Camera.main.ScreenToWorldPoint(new Vector3(0,0,10)).x;
         float maxWidth = Camera.main.ScreenToWorldPoint(new Vector3(Screen.width,0,10)).x;
         rb.position = new Vector3(Mathf.Clamp(rb.position.x,minWidth + 1,maxWidth - 1),
