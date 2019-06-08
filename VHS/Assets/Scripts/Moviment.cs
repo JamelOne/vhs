@@ -26,20 +26,15 @@ public class Moviment : MonoBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody>();
-        //anim = GetComponent<Animator>();
         groundCheck = gameObject.transform.Find("GroundCheck");
         currentSpeed = velocidade;
     }
 
     // Update is called once per frame
     
-    void Update(){
-
+    void Update()
+    {
         onGround = Physics.Linecast(transform.position, groundCheck.position, 1<<LayerMask.NameToLayer("Ground"));
-        if(Input.GetButtonDown("Fire1")){
-            Debug.Log("Atacando");
-            //anim.SetTrigger("Attack");
-        }
     }
     private void FixedUpdate(){
 
@@ -62,12 +57,17 @@ public class Moviment : MonoBehaviour
             }
         }
        
+       
         
         float minWidth = Camera.main.ScreenToWorldPoint(new Vector3(0,0,10)).x;
         float maxWidth = Camera.main.ScreenToWorldPoint(new Vector3(Screen.width,0,10)).x;
         rb.position = new Vector3(Mathf.Clamp(rb.position.x,minWidth + 1,maxWidth - 1),
             rb.position.y,
             Mathf.Clamp(rb.position.z,minHeight + 1,maxHeight - 1));
+
+        if(Input.GetButtonDown("Fire1")){
+            Debug.Log("Atacando");
+        }
     }
 
     private void Flip(){

@@ -397,10 +397,10 @@ GameObject:
   m_Component:
   - component: {fileID: 1493601297}
   - component: {fileID: 1493601296}
-  - component: {fileID: 1493601298}
   - component: {fileID: 1493601299}
   - component: {fileID: 1493601295}
   - component: {fileID: 1493601300}
+  - component: {fileID: 1493601298}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -478,7 +478,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1493601294}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.97, y: -1.28, z: -3.6}
+  m_LocalPosition: {x: 0.53, y: -1.28, z: -3.6}
   m_LocalScale: {x: 7, y: 7, z: 7}
   m_Children:
   - {fileID: 1291472953}
@@ -494,11 +494,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 1493601294}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: de714bad3ce7a904cb3140873edb8475, type: 3}
+  m_Script: {fileID: 11500000, guid: df33e3fed6201274780f6bb8448e3b20, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  minHeight: -9
-  maxHeight: -0.5
+  minHeight: -11
+  maxHeight: -2
   velocidade: 6
 --- !u!54 &1493601299
 Rigidbody:
@@ -716,7 +716,7 @@ Transform:
   m_GameObject: {fileID: 1614652571}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 29.41, y: -1.1, z: 0}
-  m_LocalScale: {x: 5, y: 5, z: 1}
+  m_LocalScale: {x: 6, y: 6, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 3
