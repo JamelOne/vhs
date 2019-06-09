@@ -42,14 +42,15 @@ public class Enemy : MonoBehaviour
     void Update()
     {
         ResetSpeed();
-        onGround = Physics.Linecast(transform.position, groundCheck.position, 1<<LayerMask.NameToLayer("Ground"));
-        //anim.SetBool("Grounded", onGround);
-        //anim.SetBool("Dead", isDead);
+        onGround = Physics.Linecast(transform.position, groundCheck.position, 1<<LayerMask.NameToLayer("Ground"));        
+        anim.SetBool("Dead", isDead);
         facingRight = (target.position.x < transform.position.x) ? false : true;
         if(facingRight)
         {
+            if(!isDead)
             transform.eulerAngles = new Vector3(0,0,0);
         }else{
+            if(!isDead)
             transform.eulerAngles = new Vector3(0,180,0);
         }
 
@@ -86,13 +87,13 @@ public class Enemy : MonoBehaviour
 
        if(!damaged){
            rb.velocity= new Vector3(hForce*currentSpeed,0,zForce*currentSpeed);
-            //anim.SetFloat("Speed", Mathf.Abs(currentSpeed));
+            anim.SetFloat("Speed", Mathf.Abs(currentSpeed));
        }
 
        
         if(Mathf.Abs(targetDistance.x)<1.5f && Mathf.Abs(targetDistance.z) <1.5f && Time.time > nextAttack){
             
-            //anim.SetTrigger("Attack");
+            anim.SetTrigger("Attack");
             currentSpeed=0;
             nextAttack=Time.time+attackRate;
         }
@@ -110,12 +111,11 @@ public void TookDamage(int damage){
         
         damaged = true;
         currentHealth-=damage;
-        //anim.SetTrigger("HitDamage");
+        anim.SetTrigger("HitDamage");
         FindObjectOfType<UIManager>().UpdateEnemyUI(maxHealth, currentHealth, enemyName);
         if(currentHealth <=0){
             isDead=true;
-            rb.AddRelativeForce(new Vector3(3,5,0),ForceMode.Impulse);
-            DisableEnemy();
+            rb.AddRelativeForce(new Vector3(-3,5,0),ForceMode.Impulse);
         }
     }
 }

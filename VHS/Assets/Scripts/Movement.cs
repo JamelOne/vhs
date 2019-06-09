@@ -47,8 +47,8 @@ public class Movement : MonoBehaviour
 
     void Update()
     {
-        //anim.SetBool("OnGround",onGround);
-        //anim.SetBool("Dead", isDead);
+        anim.SetBool("OnGround",onGround);
+        anim.SetBool("Dead", isDead);
         onGround = Physics.Linecast(transform.position, groundCheck.position, 1 << LayerMask.NameToLayer("Ground"));
 
         if (currentHealth < 1)
@@ -65,13 +65,16 @@ public class Movement : MonoBehaviour
     private void FixedUpdate()
     {
 
+    
         if (!isDead)
         {
 
             horizontal = Input.GetAxis("Horizontal");
             vertical = Input.GetAxis("Vertical");
             rb.velocity = new Vector3(horizontal * currentSpeed, rb.velocity.y, vertical * currentSpeed);
-
+            anim.SetFloat("Speed",Mathf.Abs(horizontal));
+            anim.SetFloat("Speed2",Mathf.Abs(vertical));
+            
         }
 
         if (!onGround)
@@ -79,19 +82,20 @@ public class Movement : MonoBehaviour
             vertical = 0;
         }
 
-        if (onGround)
-        {
-            //anim.SetFloat("Speed",Mathf.Abs(rb.velocity.magnitude));
-        }
+
         if (horizontal > 0 && !facingRight)
         {
+            
             Flip();
+            
         }
         else
         {
             if (horizontal < 0 && facingRight)
             {
+                
                 Flip();
+                
             }
         }
 
@@ -105,10 +109,12 @@ public class Movement : MonoBehaviour
 
     private void Flip()
     {
+        
         facingRight = !facingRight;
         Vector3 scale = transform.localScale;
         scale.x *= -1;
         transform.localScale = scale;
+        
     }
 
     void ZeroSpeed()

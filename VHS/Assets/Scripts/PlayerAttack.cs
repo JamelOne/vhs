@@ -23,12 +23,10 @@ public class PlayerAttack : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         Enemy enemy = other.GetComponent<Enemy>();
-        Movement player = other.GetComponent<Movement>();
+        
         if(enemy!=null){
             enemy.TookDamage(damage);
         }
-        if(player!=null){
-            player.takeDmg(damage);
-       }
+        
     }
 }
