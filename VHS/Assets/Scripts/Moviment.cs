@@ -9,6 +9,7 @@ public class Moviment : MonoBehaviour
     
     private Rigidbody rb;
     private Transform groundCheck;
+    private Animator anim;
     private bool onGround;
     private bool isDead = false;
     private bool facingRight = true;
@@ -26,6 +27,7 @@ public class Moviment : MonoBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody>();
+        anim = GetComponent<Animator>();
         groundCheck = gameObject.transform.Find("GroundCheck");
         currentSpeed = velocidade;
     }
@@ -34,7 +36,13 @@ public class Moviment : MonoBehaviour
     
     void Update()
     {
+        //anim.SetBool("OnGround",onGround);
+        //anim.SetBool("Dead", isDead);
         onGround = Physics.Linecast(transform.position, groundCheck.position, 1<<LayerMask.NameToLayer("Ground"));
+        
+        if(Input.GetButtonDown("Fire1")){
+            //anim.SetTrigger("Attack");
+        }
     }
     private void FixedUpdate(){
 
@@ -46,9 +54,13 @@ public class Moviment : MonoBehaviour
         
         }
 
-        if(!onGround)
+        if(!onGround){
             vertical=0;
-
+        }
+        ]
+        if(onGround){
+            //anim.SetFloat("Speed",Mathf.Abs(rb.velocity.magnitude));
+        }
         if(horizontal>0 && !facingRight){
             Flip();
         }else{
@@ -61,13 +73,8 @@ public class Moviment : MonoBehaviour
         
         float minWidth = Camera.main.ScreenToWorldPoint(new Vector3(0,0,10)).x;
         float maxWidth = Camera.main.ScreenToWorldPoint(new Vector3(Screen.width,0,10)).x;
-        rb.position = new Vector3(Mathf.Clamp(rb.position.x,minWidth + 1,maxWidth - 1),
-            rb.position.y,
-            Mathf.Clamp(rb.position.z,minHeight + 1,maxHeight - 1));
-
-        if(Input.GetButtonDown("Fire1")){
-            //anim.SetTrigger("Attack");
-        }
+        rb.position = new Vector3(Mathf.Clamp(rb.position.x,minWidth + 1,maxWidth - 1), rb.position.y, Mathf.Clamp(rb.position.z,minHeight + 1,maxHeight - 1));
+        
     }
 
     private void Flip(){

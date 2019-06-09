@@ -37,8 +37,8 @@ public class Enemy : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
-         onGround = Physics.Linecast(transform.position, groundCheck.position, 1<<LayerMask.NameToLayer("Ground"));
+        ResetSpeed();
+        onGround = Physics.Linecast(transform.position, groundCheck.position, 1<<LayerMask.NameToLayer("Ground"));
         facingRight = (target.position.x < transform.position.x) ? false : true;
         if(facingRight)
         {
