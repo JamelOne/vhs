@@ -19,7 +19,7 @@ public class Movement : MonoBehaviour
     public float minHeight, maxHeight;
 
     public int playerHealth = 10;
-
+    public int specialGauge=0;
     public string playerName;
 
     [SerializeField]
@@ -27,6 +27,7 @@ public class Movement : MonoBehaviour
 
     float horizontal;
     float vertical;
+
 
     // Start is called before the first frame update
     void Start()
