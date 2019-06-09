@@ -37,8 +37,8 @@ public class Enemy : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
-         onGround = Physics.Linecast(transform.position, groundCheck.position, 1<<LayerMask.NameToLayer("Ground"));
+        ResetSpeed();
+        onGround = Physics.Linecast(transform.position, groundCheck.position, 1<<LayerMask.NameToLayer("Ground"));
         facingRight = (target.position.x < transform.position.x) ? false : true;
         if(facingRight)
         {
@@ -80,18 +80,16 @@ public class Enemy : MonoBehaviour
 
        if(!damaged){
            rb.velocity= new Vector3(hForce*currentSpeed,0,zForce*currentSpeed);
-           
        }
 
        
         if(Mathf.Abs(targetDistance.x)<1.5f && Mathf.Abs(targetDistance.z) <1.5f && Time.time > nextAttack){
             
+            //anim.SetTrigger("Attack");
             currentSpeed=0;
             nextAttack=Time.time+attackRate;
         }
-       
-
-        
+            
        
    }
     
