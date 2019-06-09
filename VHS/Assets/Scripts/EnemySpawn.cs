@@ -21,7 +21,7 @@ public class EnemySpawn : MonoBehaviour
         if(currentEnemies>=numberOfEnemies){
             int enemies=FindObjectsOfType<Enemy>().Length;
             if(enemies<=0){
-                //FindObjectOfType<CameraFollow>().maxXAndY.x=200;
+                FindObjectOfType<CameraFollow>().maxXAndY.x=200;
                 gameObject.SetActive(false);
             }
         }
@@ -45,7 +45,7 @@ public class EnemySpawn : MonoBehaviour
     private void OnTriggerEnter(Collider other){
         if(other.CompareTag("Player")){
             GetComponent<BoxCollider>().enabled=false;
-            //FindObjectOfType<CameraFollow>().maxXAndY.x = transform.position.x;
+            FindObjectOfType<CameraFollow>().maxXAndY.x = transform.position.x;
             SpawnEnemy();
         }
     }

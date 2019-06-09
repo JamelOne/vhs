@@ -47,8 +47,8 @@ public class Movement : MonoBehaviour
 
     void Update()
     {
-        anim.SetBool("OnGround",onGround);
-        anim.SetBool("Dead", isDead);
+        //anim.SetBool("OnGround",onGround);
+        //anim.SetBool("Dead", isDead);
         onGround = Physics.Linecast(transform.position, groundCheck.position, 1 << LayerMask.NameToLayer("Ground"));
 
         if (currentHealth < 1)
@@ -126,7 +126,7 @@ public class Movement : MonoBehaviour
         if (!isDead)
         {
             currentHealth -= damage;
-            //anim.SetTrigger("HitDamage");
+            anim.SetTrigger("HitDamage");
             FindObjectOfType<UIManager>().UpdateHealth(currentHealth);
         }
 
