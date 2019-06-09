@@ -1206,6 +1206,11 @@ PrefabInstance:
       propertyPath: box
       value: 
       objectReference: {fileID: 985442484}
+    - target: {fileID: 4948676862928922467, guid: aed43cc164be50c4dbaa234e27c73143,
+        type: 3}
+      propertyPath: playerHealth
+      value: 100
+      objectReference: {fileID: 0}
     - target: {fileID: 4948676862928922473, guid: aed43cc164be50c4dbaa234e27c73143,
         type: 3}
       propertyPath: m_Controller
@@ -1214,12 +1219,22 @@ PrefabInstance:
     - target: {fileID: 4948676864009315837, guid: aed43cc164be50c4dbaa234e27c73143,
         type: 3}
       propertyPath: m_Size.x
-      value: 0.18505162
+      value: 0.104363084
       objectReference: {fileID: 0}
     - target: {fileID: 4948676864009315837, guid: aed43cc164be50c4dbaa234e27c73143,
         type: 3}
       propertyPath: m_Center.x
-      value: 0.13186
+      value: 0.09151575
+      objectReference: {fileID: 0}
+    - target: {fileID: 4948676864009315837, guid: aed43cc164be50c4dbaa234e27c73143,
+        type: 3}
+      propertyPath: m_Size.y
+      value: 0.10035661
+      objectReference: {fileID: 0}
+    - target: {fileID: 4948676864009315837, guid: aed43cc164be50c4dbaa234e27c73143,
+        type: 3}
+      propertyPath: m_Center.z
+      value: 0.010061905
       objectReference: {fileID: 0}
     - target: {fileID: 4948676864009315835, guid: aed43cc164be50c4dbaa234e27c73143,
         type: 3}
@@ -3398,6 +3413,46 @@ PrefabInstance:
         type: 3}
       propertyPath: maxHeight
       value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 871800786327854447, guid: 6d48efd63cc35ef48a4e1a27f49ad9de,
+        type: 3}
+      propertyPath: attackRate
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 871800786327854447, guid: 6d48efd63cc35ef48a4e1a27f49ad9de,
+        type: 3}
+      propertyPath: damageTime
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 871800785890661334, guid: 6d48efd63cc35ef48a4e1a27f49ad9de,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 871800785890661320, guid: 6d48efd63cc35ef48a4e1a27f49ad9de,
+        type: 3}
+      propertyPath: m_Size.x
+      value: 0.12647846
+      objectReference: {fileID: 0}
+    - target: {fileID: 871800785890661320, guid: 6d48efd63cc35ef48a4e1a27f49ad9de,
+        type: 3}
+      propertyPath: m_Center.x
+      value: 1.1768403
+      objectReference: {fileID: 0}
+    - target: {fileID: 871800785890661320, guid: 6d48efd63cc35ef48a4e1a27f49ad9de,
+        type: 3}
+      propertyPath: m_Size.y
+      value: 0.11843789
+      objectReference: {fileID: 0}
+    - target: {fileID: 871800785890661320, guid: 6d48efd63cc35ef48a4e1a27f49ad9de,
+        type: 3}
+      propertyPath: m_Center.y
+      value: 0.04140002
+      objectReference: {fileID: 0}
+    - target: {fileID: 871800785890661323, guid: 6d48efd63cc35ef48a4e1a27f49ad9de,
+        type: 3}
+      propertyPath: damage
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6d48efd63cc35ef48a4e1a27f49ad9de, type: 3}

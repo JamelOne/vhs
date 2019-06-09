@@ -44,7 +44,7 @@ public class Enemy : MonoBehaviour
         onGround = Physics.Linecast(transform.position, groundCheck.position, 1<<LayerMask.NameToLayer("Ground"));        
         anim.SetBool("Dead", isDead);
         facingRight = (target.position.x < transform.position.x) ? false : true;
-        if(facingRight)
+        if(facingRight && !isDead)
         {
             if(!isDead)
             transform.eulerAngles = new Vector3(0,0,0);
@@ -73,7 +73,6 @@ public class Enemy : MonoBehaviour
             
         if(walkTimer >= Random.Range(1f,2f))
         {
-            
             zForce = Random.Range(-1,2);
             walkTimer=0;
         }
@@ -90,13 +89,14 @@ public class Enemy : MonoBehaviour
        }
 
        
-        if(Mathf.Abs(targetDistance.x)<1.5f && Mathf.Abs(targetDistance.z) <1.5f && Time.time > nextAttack){
-            
+        if(Mathf.Abs(targetDistance.x)<1.5f && Mathf.Abs(targetDistance.z) <1.5f && Time.time > nextAttack)
+        {
             anim.SetTrigger("Attack");
             currentSpeed=0;
             nextAttack=Time.time+attackRate;
             Debug.Log(nextAttack);
-            
+            Debug.Log("Time.time");
+            Debug.Log(Time.time);
         }
             
        
@@ -112,7 +112,7 @@ public void TookDamage(int damage){
         
         damaged = true;
         currentHealth-=damage;
-        anim.SetTrigger("HitDamage");
+        //anim.SetTrigger("HitDamage");
         FindObjectOfType<UIManager>().UpdateEnemyUI(maxHealth, currentHealth, enemyName);
         if(currentHealth <=0){
             isDead=true;
