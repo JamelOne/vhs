@@ -66,7 +66,7 @@ public class Enemy : MonoBehaviour
    }
 
    private void FixedUpdate(){
-
+       
        
        if(!isDead){
             Vector3 targetDistance = target.position - transform.position;

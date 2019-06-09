@@ -12,6 +12,7 @@ public class Movement : MonoBehaviour
     private Transform groundCheck;
     private Animator anim;
     private GameMaster gm; 
+
     private bool onGround;
     private bool isDead = false;
     private bool facingRight = true;
@@ -37,6 +38,7 @@ public class Movement : MonoBehaviour
     {
         rb = GetComponent<Rigidbody>();
         anim = GetComponent<Animator>();
+
         groundCheck = gameObject.transform.Find("GroundCheck");
         currentSpeed = velocidade;
         currentHealth = playerHealth;
@@ -57,15 +59,20 @@ public class Movement : MonoBehaviour
             isDead = true;
 
         }
-        if (Input.GetButtonDown("Fire1"))
+        if (Input.GetKeyDown("a"))
         {
             anim.SetTrigger("Attack");
+
+        }
+
+        if (Input.GetKeyDown("s"))
+        {
+            anim.SetTrigger("Attack2");
         }
     }
     private void FixedUpdate()
     {
 
-    
         if (!isDead)
         {
 
