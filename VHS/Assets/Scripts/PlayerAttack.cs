@@ -24,11 +24,14 @@ public class PlayerAttack : MonoBehaviour
     {
         Enemy enemy = other.GetComponent<Enemy>();
         Movement player = other.GetComponent<Movement>();
-        if(enemy!=null){
+
+        if(enemy!=null)
+        {
             enemy.TookDamage(damage);
         }
-        if(player!=null){
-            player.takeDmg(damage);
-       }
+      if(player!=null){
+          player.takeDmg(damage);
+      }
+      
     }
 }

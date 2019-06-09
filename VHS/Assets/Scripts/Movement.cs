@@ -12,6 +12,7 @@ public class Movement : MonoBehaviour
     private Transform groundCheck;
     private Animator anim;
     private GameMaster gm; 
+
     private bool onGround;
     private bool isDead = false;
     private bool facingRight = true;
@@ -46,6 +47,7 @@ public class Movement : MonoBehaviour
     {
         rb = GetComponent<Rigidbody>();
         anim = GetComponent<Animator>();
+
         groundCheck = gameObject.transform.Find("GroundCheck");
         currentSpeed = velocidade;
         currentHealth = playerHealth;
@@ -60,8 +62,8 @@ public class Movement : MonoBehaviour
 
     void Update()
     {
-        //anim.SetBool("OnGround",onGround);
-        //anim.SetBool("Dead", isDead);
+        anim.SetBool("OnGround",onGround);
+        anim.SetBool("Dead", isDead);
         onGround = Physics.Linecast(transform.position, groundCheck.position, 1 << LayerMask.NameToLayer("Ground"));
 
         if (currentHealth < 1)
@@ -74,9 +76,15 @@ public class Movement : MonoBehaviour
             currentHealth = 10;
             isDead = false;
         }
-        if (Input.GetButtonDown("Fire1"))
+        if (Input.GetKeyDown("a"))
         {
             anim.SetTrigger("Attack");
+
+        }
+
+        if (Input.GetKeyDown("s"))
+        {
+            anim.SetTrigger("Attack2");
         }
 
         if (isDead)
@@ -100,7 +108,9 @@ public class Movement : MonoBehaviour
             horizontal = Input.GetAxis("Horizontal");
             vertical = Input.GetAxis("Vertical");
             rb.velocity = new Vector3(horizontal * currentSpeed, rb.velocity.y, vertical * currentSpeed);
-
+            anim.SetFloat("Speed",Mathf.Abs(horizontal));
+            anim.SetFloat("Speed2",Mathf.Abs(vertical));
+            
         }
 
         if (!onGround)
@@ -108,19 +118,20 @@ public class Movement : MonoBehaviour
             vertical = 0;
         }
 
-        if (onGround)
-        {
-            //anim.SetFloat("Speed",Mathf.Abs(rb.velocity.magnitude));
-        }
+
         if (horizontal > 0 && !facingRight)
         {
+            
             Flip();
+            
         }
         else
         {
             if (horizontal < 0 && facingRight)
             {
+                
                 Flip();
+                
             }
         }
 
@@ -134,10 +145,12 @@ public class Movement : MonoBehaviour
 
     private void Flip()
     {
+        
         facingRight = !facingRight;
         Vector3 scale = transform.localScale;
         scale.x *= -1;
         transform.localScale = scale;
+        
     }
 
     void ZeroSpeed()
@@ -155,6 +168,7 @@ public class Movement : MonoBehaviour
         if (!isDead)
         {
             currentHealth -= damage;
+            Debug.Log(currentHealth);
             anim.SetTrigger("HitDamage");
             FindObjectOfType<UIManager>().UpdateHealth(currentHealth);
         }

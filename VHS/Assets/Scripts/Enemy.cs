@@ -43,21 +43,21 @@ public class Enemy : MonoBehaviour
         anim=GetComponent<Animator>();
         groundCheck=transform.Find("GroundCheck");
         target = FindObjectOfType<Movement>().transform;
-        ResetSpeed();
         currentHealth=maxHealth;
     }
 
 void Update()
     {
-        ResetSpeed();
-        onGround = Physics.Linecast(transform.position, groundCheck.position, 1<<LayerMask.NameToLayer("Ground"));
-        //anim.SetBool("Grounded", onGround);
-        //anim.SetBool("Dead", isDead);
+        
+        onGround = Physics.Linecast(transform.position, groundCheck.position, 1<<LayerMask.NameToLayer("Ground"));        
+        anim.SetBool("Dead", isDead);
         facingRight = (target.position.x < transform.position.x) ? false : true;
         if(facingRight)
         {
+            if(!isDead)
             transform.eulerAngles = new Vector3(0,0,0);
         }else{
+            if(!isDead)
             transform.eulerAngles = new Vector3(0,180,0);
         }
 
@@ -80,8 +80,9 @@ void Update()
             StartCoroutine(PauseEnemyMovement());
         }
 
-
-        if (!isDead){
+       
+       
+       if(!isDead){
             Vector3 targetDistance = target.position - transform.position;
             float hForce=targetDistance.x / Mathf.Abs(targetDistance.x);
 
@@ -101,15 +102,17 @@ void Update()
 
        if(!damaged){
            rb.velocity= new Vector3(hForce*currentSpeed,0,zForce*currentSpeed);
-            //anim.SetFloat("Speed", Mathf.Abs(currentSpeed));
+            anim.SetFloat("Speed", Mathf.Abs(currentSpeed));
        }
 
        
         if(Mathf.Abs(targetDistance.x)<1.5f && Mathf.Abs(targetDistance.z) <1.5f && Time.time > nextAttack){
             
-            //anim.SetTrigger("Attack");
+            anim.SetTrigger("Attack");
             currentSpeed=0;
             nextAttack=Time.time+attackRate;
+            Debug.Log(nextAttack);
+            
         }
             
        
@@ -125,14 +128,13 @@ public void TookDamage(int damage){
         
         damaged = true;
         currentHealth-=damage;
-        //anim.SetTrigger("HitDamage");
+        anim.SetTrigger("HitDamage");
         FindObjectOfType<UIManager>().UpdateEnemyUI(maxHealth, currentHealth, enemyName);
         if(currentHealth <=0){
             player.specialGauge = player.specialGauge + gaugeGain;
             player.pontuacaoTotal = player.pontuacaoTotal + pontuacaoPorInimigo;
             isDead=true;
-            rb.AddRelativeForce(new Vector3(3,5,0),ForceMode.Impulse);
-            DisableEnemy();
+            rb.AddRelativeForce(new Vector3(-3,5,0),ForceMode.Impulse);
         }
     }
 }
