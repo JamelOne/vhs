@@ -5,13 +5,17 @@ using UnityEngine;
 
 public class PlayerState : MonoBehaviour
 {
-    public int playerHealth = 5;
-    private bool morto=false;
+    public int playerHealth = 10;
 
+    public string playerName;
+    
+    private bool morto=false;
+    private int currentHealth;
     // Start is called before the first frame update
     void Start()
     {
-        
+      
+        currentHealth=playerHealth;
     }
 
     // Update is called once per frame
@@ -28,7 +32,9 @@ public class PlayerState : MonoBehaviour
     }
 
     public void takeDmg (int damage) {
+        if(!morto){
         playerHealth-=damage;
-        Debug.Log("Inimigo Atacou!");
+       
+        }
     }
 }
