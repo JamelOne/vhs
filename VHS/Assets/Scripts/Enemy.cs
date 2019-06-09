@@ -14,18 +14,27 @@ public class Enemy : MonoBehaviour
     private float zForce;
     private float walkTimer;
     private float currentSpeed;
-    private bool damaged=false;
+    private bool damaged = false;
     private float damageTimer;
     private int currentHealth;
     private float nextAttack;
 
+
     public float minHeight, maxHeight;
     public int maxHealth;
     public float attackRate = 1f;
-    public float damageTime=0.5f;
-    public float maxSpeed=2;
+    public float damageTime = 0.5f;
+    public float maxSpeed = 2;
     public string enemyName;
+    public Especial_Pause e_pause;
+    public Movement player;
+    public int gaugeGain = 2;   // Quanto o player ganha de Especial Gauge quando o inimigo morrer
+
+    public int pontuacaoPorInimigo = 100;
+
     
+
+
 
     // Start is called before the first frame update
     void Start()
@@ -38,8 +47,7 @@ public class Enemy : MonoBehaviour
         currentHealth=maxHealth;
     }
 
-    // Update is called once per frame
-    void Update()
+void Update()
     {
         ResetSpeed();
         onGround = Physics.Linecast(transform.position, groundCheck.position, 1<<LayerMask.NameToLayer("Ground"));
@@ -62,14 +70,21 @@ public class Enemy : MonoBehaviour
             }
         }
         walkTimer += Time.deltaTime;
+
    }
 
    private void FixedUpdate(){
 
-       
-       if(!isDead){
+        if (e_pause.especialPause == true)
+        {
+            StartCoroutine(PauseEnemyMovement());
+        }
+
+
+        if (!isDead){
             Vector3 targetDistance = target.position - transform.position;
             float hForce=targetDistance.x / Mathf.Abs(targetDistance.x);
+
             
         if(walkTimer >= Random.Range(1f,2f))
         {
@@ -113,6 +128,8 @@ public void TookDamage(int damage){
         //anim.SetTrigger("HitDamage");
         FindObjectOfType<UIManager>().UpdateEnemyUI(maxHealth, currentHealth, enemyName);
         if(currentHealth <=0){
+            player.specialGauge = player.specialGauge + gaugeGain;
+            player.pontuacaoTotal = player.pontuacaoTotal + pontuacaoPorInimigo;
             isDead=true;
             rb.AddRelativeForce(new Vector3(3,5,0),ForceMode.Impulse);
             DisableEnemy();
@@ -128,6 +145,26 @@ public void DisableEnemy(){
     void ResetSpeed()
     {
         currentSpeed=maxSpeed;
+    }
+
+    IEnumerator PauseEnemyMovement()
+    {
+        
+        //Debug.Log(maxSpeed_backup); 
+
+        attackRate = 0f;
+        damageTime = 0f;
+        maxSpeed = 0f;
+
+        yield return new WaitForSeconds(e_pause.time);
+
+        Debug.Log("Devolvendo valores de attack e velocidade");
+        e_pause.especialPause = false;
+        attackRate = 1f;
+        damageTime = 0.5f;
+        maxSpeed = 2;
+        Debug.Log(maxSpeed);
+
     }
 
 }

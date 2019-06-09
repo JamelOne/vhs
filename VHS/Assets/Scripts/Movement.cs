@@ -22,6 +22,11 @@ public class Movement : MonoBehaviour
     public int playerHealth = 10;
     public int specialGauge=0;
     public string playerName;
+    public Especial_FF ff;
+    public static bool DeathUI = false;
+    public GameObject DeathMenuUI;
+
+    public int pontuacaoTotal = 0;
 
     [SerializeField]
     private float velocidade = 0;
@@ -61,9 +66,21 @@ public class Movement : MonoBehaviour
         {
             anim.SetTrigger("Attack");
         }
+
+        if (isDead)
+        {
+            OpenMenu();
+        }
+        else
+            CloseMenu();
     }
     private void FixedUpdate()
     {
+        if (ff.especial_FF == true)
+        {
+            ff.especial_FF = false;
+            StartCoroutine(GottaGoFast());
+        }
 
         if (!isDead)
         {
@@ -130,5 +147,26 @@ public class Movement : MonoBehaviour
             FindObjectOfType<UIManager>().UpdateHealth(currentHealth);
         }
 
+    }
+
+    IEnumerator GottaGoFast()
+    {
+        currentSpeed = currentSpeed * 2;
+        yield return new WaitForSeconds(ff.time);
+        currentSpeed = currentSpeed / 2;
+    }
+
+    void OpenMenu()
+    {
+        DeathMenuUI.SetActive(true);
+        Time.timeScale = 0f;
+        DeathUI = true;
+    }
+
+    void CloseMenu()
+    {
+        DeathMenuUI.SetActive(false);
+        Time.timeScale = 1f;
+        DeathUI = false;
     }
 }
