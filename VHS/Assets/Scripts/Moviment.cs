@@ -66,7 +66,7 @@ public class Moviment : MonoBehaviour
             Mathf.Clamp(rb.position.z,minHeight + 1,maxHeight - 1));
 
         if(Input.GetButtonDown("Fire1")){
-            Debug.Log("Atacando");
+            //anim.SetTrigger("Attack");
         }
     }
 
