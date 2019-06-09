@@ -18,7 +18,7 @@ public class Movement : MonoBehaviour
     private int currentHealth;
     private float currentSpeed;
     public float minHeight, maxHeight;
-
+    public float maxWidth, minWidth;
     public int playerHealth = 10;
     public int specialGauge=0;
     public string playerName;
@@ -97,8 +97,8 @@ public class Movement : MonoBehaviour
 
 
 
-        float minWidth = Camera.main.ScreenToWorldPoint(new Vector3(0, 0, 10)).x;
-        float maxWidth = Camera.main.ScreenToWorldPoint(new Vector3(Screen.width,0,10)).x;
+        minWidth = Camera.main.ScreenToWorldPoint(new Vector3(0, 0, 10)).x;
+        maxWidth = Camera.main.ScreenToWorldPoint(new Vector3(Screen.width,0,10)).x;
         rb.position = new Vector3(Mathf.Clamp(rb.position.x, minWidth + 1, maxWidth - 1), rb.position.y, Mathf.Clamp(rb.position.z, minHeight + 1, maxHeight - 1));
 
     }
