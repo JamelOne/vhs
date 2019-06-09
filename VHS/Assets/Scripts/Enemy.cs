@@ -6,6 +6,7 @@ public class Enemy : MonoBehaviour
 {
     private Rigidbody rb;
     private Transform groundCheck;
+    private Animator anim;
     private bool onGround;
     private bool facingRight = true;
     private Transform target;
@@ -23,11 +24,14 @@ public class Enemy : MonoBehaviour
     public float attackRate = 1f;
     public float damageTime=0.5f;
     public float maxSpeed=2;
+    public string enemyName;
+    
 
     // Start is called before the first frame update
     void Start()
     {
         rb=GetComponent<Rigidbody>();
+        anim=GetComponent<Animator>();
         groundCheck=transform.Find("GroundCheck");
         target = FindObjectOfType<Movement>().transform;
         ResetSpeed();
@@ -39,6 +43,8 @@ public class Enemy : MonoBehaviour
     {
         ResetSpeed();
         onGround = Physics.Linecast(transform.position, groundCheck.position, 1<<LayerMask.NameToLayer("Ground"));
+        //anim.SetBool("Grounded", onGround);
+        //anim.SetBool("Dead", isDead);
         facingRight = (target.position.x < transform.position.x) ? false : true;
         if(facingRight)
         {
@@ -80,6 +86,7 @@ public class Enemy : MonoBehaviour
 
        if(!damaged){
            rb.velocity= new Vector3(hForce*currentSpeed,0,zForce*currentSpeed);
+            //anim.SetFloat("Speed", Mathf.Abs(currentSpeed));
        }
 
        
@@ -100,11 +107,15 @@ public class Enemy : MonoBehaviour
 public void TookDamage(int damage){
     if(!isDead)
     {
+        
         damaged = true;
         currentHealth-=damage;
+        //anim.SetTrigger("HitDamage");
+        FindObjectOfType<UIManager>().UpdateEnemyUI(maxHealth, currentHealth, enemyName);
         if(currentHealth <=0){
             isDead=true;
             rb.AddRelativeForce(new Vector3(3,5,0),ForceMode.Impulse);
+            DisableEnemy();
         }
     }
 }

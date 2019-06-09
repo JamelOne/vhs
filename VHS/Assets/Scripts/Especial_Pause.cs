@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class Especial_Pause : MonoBehaviour
 {
-    public PlayerState player;
+    public Movement player;
     public bool especialPause = false;
     public float time = 5f;
 
