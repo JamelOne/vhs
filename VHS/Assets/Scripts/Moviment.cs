@@ -9,6 +9,7 @@ public class Moviment : MonoBehaviour
     
     private Rigidbody rb;
     private Transform groundCheck;
+    private GameMaster gm; 
     private bool onGround;
     private bool isDead = false;
     private bool facingRight = true;
@@ -21,6 +22,11 @@ public class Moviment : MonoBehaviour
     
     float horizontal;
     float vertical;
+
+    void Awake() {
+        gm = GameObject.FindGameObjectWithTag("GM").GetComponent<GameMaster>();
+		transform.position = gm.lastCheckPointPos;
+    }
 
     // Start is called before the first frame update
     void Start()
@@ -56,6 +62,8 @@ public class Moviment : MonoBehaviour
                 Flip();
             }
         }
+
+
        
        
         
