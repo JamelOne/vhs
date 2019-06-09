@@ -34,14 +34,13 @@ public class Enemy : MonoBehaviour
         anim=GetComponent<Animator>();
         groundCheck=transform.Find("GroundCheck");
         target = FindObjectOfType<Movement>().transform;
-        ResetSpeed();
         currentHealth=maxHealth;
     }
 
     // Update is called once per frame
     void Update()
     {
-        ResetSpeed();
+        
         onGround = Physics.Linecast(transform.position, groundCheck.position, 1<<LayerMask.NameToLayer("Ground"));        
         anim.SetBool("Dead", isDead);
         facingRight = (target.position.x < transform.position.x) ? false : true;
@@ -96,6 +95,8 @@ public class Enemy : MonoBehaviour
             anim.SetTrigger("Attack");
             currentSpeed=0;
             nextAttack=Time.time+attackRate;
+            Debug.Log(nextAttack);
+            
         }
             
        

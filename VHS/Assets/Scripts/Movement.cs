@@ -139,6 +139,7 @@ public class Movement : MonoBehaviour
         if (!isDead)
         {
             currentHealth -= damage;
+            Debug.Log(currentHealth);
             anim.SetTrigger("HitDamage");
             FindObjectOfType<UIManager>().UpdateHealth(currentHealth);
         }
