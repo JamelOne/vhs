@@ -47,8 +47,8 @@ public class Movement : MonoBehaviour
 
     void Update()
     {
-        //anim.SetBool("OnGround",onGround);
-        //anim.SetBool("Dead", isDead);
+        anim.SetBool("OnGround",onGround);
+        anim.SetBool("Dead", isDead);
         onGround = Physics.Linecast(transform.position, groundCheck.position, 1 << LayerMask.NameToLayer("Ground"));
 
         if (currentHealth < 1)
@@ -59,7 +59,7 @@ public class Movement : MonoBehaviour
         }
         if (Input.GetButtonDown("Fire1"))
         {
-            //anim.SetTrigger("Attack");
+            anim.SetTrigger("Attack");
         }
     }
     private void FixedUpdate()
