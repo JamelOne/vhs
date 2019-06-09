@@ -22,6 +22,7 @@ public class Movement : MonoBehaviour
     public int playerHealth = 10;
     public int specialGauge=0;
     public string playerName;
+    public Vector2 checkpointPosition;
 
     [SerializeField]
     private float velocidade = 0;
@@ -30,7 +31,7 @@ public class Movement : MonoBehaviour
     float vertical;
     void Awake() {
         gm = GameObject.FindGameObjectWithTag("GM").GetComponent<GameMaster>();
-		transform.position = gm.lastCheckPointPos;
+		gm.lastCheckPointPos = transform.position;
     }
     // Start is called before the first frame update
     void Start()
@@ -43,6 +44,10 @@ public class Movement : MonoBehaviour
         
     }
 
+
+    public void healthDoMalandro(int lifeSurplus){
+        currentHealth += lifeSurplus;
+    }
     // Update is called once per frame
 
     void Update()
@@ -55,7 +60,11 @@ public class Movement : MonoBehaviour
         {
             Debug.Log("YOU'RE DEAD");
             isDead = true;
-
+            transform.position = gm.lastCheckPointPos;
+        }
+        if(isDead == true){
+            currentHealth = 10;
+            isDead = false;
         }
         if (Input.GetButtonDown("Fire1"))
         {

@@ -1310,6 +1310,11 @@ PrefabInstance:
       propertyPath: maxWidth
       value: 10
       objectReference: {fileID: 0}
+    - target: {fileID: 4948676862928922467, guid: aed43cc164be50c4dbaa234e27c73143,
+        type: 3}
+      propertyPath: specialGauge
+      value: 10000
+      objectReference: {fileID: 0}
     - target: {fileID: 4948676862928922473, guid: aed43cc164be50c4dbaa234e27c73143,
         type: 3}
       propertyPath: m_Controller
