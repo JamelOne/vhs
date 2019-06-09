@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 
-public class Moviment : MonoBehaviour
+public class Movement : MonoBehaviour
 {
     
     
@@ -57,7 +57,7 @@ public class Moviment : MonoBehaviour
         if(!onGround){
             vertical=0;
         }
-        ]
+        
         if(onGround){
             //anim.SetFloat("Speed",Mathf.Abs(rb.velocity.magnitude));
         }

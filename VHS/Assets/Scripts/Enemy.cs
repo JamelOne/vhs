@@ -29,7 +29,7 @@ public class Enemy : MonoBehaviour
     {
         rb=GetComponent<Rigidbody>();
         groundCheck=transform.Find("GroundCheck");
-        target = FindObjectOfType<Moviment>().transform;
+        target = FindObjectOfType<Movement>().transform;
         ResetSpeed();
         currentHealth=maxHealth;
     }
