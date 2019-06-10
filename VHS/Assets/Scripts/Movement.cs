@@ -63,6 +63,9 @@ public class Movement : MonoBehaviour
 
     void Update()
     {
+        if (Pause_Menu.GameIsPaused)
+            return;
+
         anim.SetBool("OnGround",onGround);
         anim.SetBool("Dead", isDead);
         onGround = Physics.Linecast(transform.position, groundCheck.position, 1 << LayerMask.NameToLayer("Ground"));
@@ -97,6 +100,9 @@ public class Movement : MonoBehaviour
     }
     private void FixedUpdate()
     {
+        if (Pause_Menu.GameIsPaused)
+            return;
+
         if (ff.especial_FF == true)
         {
             ff.especial_FF = false;

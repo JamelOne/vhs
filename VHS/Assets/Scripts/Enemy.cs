@@ -50,6 +50,8 @@ public class Enemy : MonoBehaviour
 
 void Update()
     {
+        if (Pause_Menu.GameIsPaused)
+            return;
 
         onGround = Physics.Linecast(transform.position, groundCheck.position, 1<<LayerMask.NameToLayer("Ground"));        
         anim.SetBool("Dead", isDead);
@@ -76,6 +78,8 @@ void Update()
    }
 
    private void FixedUpdate(){
+        if (Pause_Menu.GameIsPaused)
+            return;
 
         if (e_pause.especialPause == true)
         {

@@ -48,7 +48,8 @@ public class Enemy1 : MonoBehaviour
 
 void Update()
     {
-        
+        if (Pause_Menu.GameIsPaused)
+            return;
         onGround = Physics.Linecast(transform.position, groundCheck.position, 1<<LayerMask.NameToLayer("Ground"));        
         anim.SetBool("Dead", isDead);
         facingRight = (target.position.x < transform.position.x) ? false : true;
@@ -74,6 +75,9 @@ void Update()
    }
 
    private void FixedUpdate(){
+        if (Pause_Menu.GameIsPaused)
+            return;
+
 
         if (e_pause.especialPause == true)
         {

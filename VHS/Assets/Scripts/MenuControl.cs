@@ -16,8 +16,4 @@ public class MenuControl : MonoBehaviour
         Application.Quit();
     }
 
-    void Awake()
-    {
-        FindObjectOfType<AudioManager>().Play("MusicaTema");
-    }
 }
