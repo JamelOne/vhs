@@ -59,7 +59,7 @@ AnimationClip:
     - time: 0
       value: {fileID: 21300000, guid: 83adff8309c096842813245ba2e5edcf, type: 3}
     - time: 0.2
-      value: {fileID: 21300000, guid: 83adff8309c096842813245ba2e5edcf, type: 3}
+      value: {fileID: 21300000, guid: 902fe0d1bdbe6234db8298b01ff9e303, type: 3}
     attribute: m_Sprite
     path: 
     classID: 212
@@ -87,7 +87,7 @@ AnimationClip:
       isPPtrCurve: 1
     pptrCurveMapping:
     - {fileID: 21300000, guid: 83adff8309c096842813245ba2e5edcf, type: 3}
-    - {fileID: 21300000, guid: 83adff8309c096842813245ba2e5edcf, type: 3}
+    - {fileID: 21300000, guid: 902fe0d1bdbe6234db8298b01ff9e303, type: 3}
   m_AnimationClipSettings:
     serializedVersion: 2
     m_AdditiveReferencePoseClip: {fileID: 0}
@@ -149,11 +149,4 @@ AnimationClip:
   m_EulerEditorCurves: []
   m_HasGenericRootTransform: 0
   m_HasMotionFloatCurves: 0
-  m_Events:
-  - time: 0
-    functionName: ZeroSpeed
-    data: 
-    objectReferenceParameter: {fileID: 0}
-    floatParameter: 0
-    intParameter: 0
-    messageOptions: 0
+  m_Events: []
