@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Enemy : MonoBehaviour
+public class Enemy1 : MonoBehaviour
 {
     private Rigidbody rb;
     private Transform groundCheck;
@@ -167,6 +167,10 @@ public void DisableEnemy(){
         maxSpeed = 2;
         Debug.Log(maxSpeed);
 
+    }
+    void ZeroSpeed()
+    {
+        currentSpeed = 0;
     }
 
 }
