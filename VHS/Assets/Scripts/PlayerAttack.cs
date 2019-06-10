@@ -23,6 +23,7 @@ public class PlayerAttack : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         Enemy enemy = other.GetComponent<Enemy>();
+        Enemy1 boss=other.GetComponent<Enemy1>();
         Movement player = other.GetComponent<Movement>();
 
         if(enemy!=null)
@@ -35,6 +36,9 @@ public class PlayerAttack : MonoBehaviour
           FindObjectOfType<AudioManager>().Play("Punch");
 
         }
-      
+      if(boss!=null)
+        {
+            boss.TookDamage(damage);
+        }
     }
 }

@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Enemy : MonoBehaviour
+public class Enemy1 : MonoBehaviour
 {
     private Rigidbody rb;
     private Transform groundCheck;
@@ -18,8 +18,6 @@ public class Enemy : MonoBehaviour
     private float damageTimer;
     private int currentHealth;
     private float nextAttack;
-
-    public Pause_Menu pause;
 
 
     public float minHeight, maxHeight;
@@ -50,7 +48,7 @@ public class Enemy : MonoBehaviour
 
 void Update()
     {
-
+        
         onGround = Physics.Linecast(transform.position, groundCheck.position, 1<<LayerMask.NameToLayer("Ground"));        
         anim.SetBool("Dead", isDead);
         facingRight = (target.position.x < transform.position.x) ? false : true;
@@ -169,6 +167,10 @@ public void DisableEnemy(){
         maxSpeed = 2;
         Debug.Log(maxSpeed);
 
+    }
+    void ZeroSpeed()
+    {
+        currentSpeed = 0;
     }
 
 }

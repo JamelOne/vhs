@@ -10,13 +10,24 @@ public class Especial_Pause : MonoBehaviour
     public float time = 5f;
     public int gaugeNeeded = 20;
 
+    public Animator anim;
+
+     void Start()
+    {
+        anim=GetComponent<Animator>();
+    }
     void Update()
     {
+        Pause();
+    }
+
+    void Pause(){
         if(Input.GetKeyDown(KeyCode.Space))
         {
             if (player.specialGauge >= gaugeNeeded)
             {
                 especialPause = true;
+                anim.SetBool("Pause",especialPause);
                 player.specialGauge = player.specialGauge - gaugeNeeded;
                 FindObjectOfType<AudioManager>().Play("E_Pause");
             }
