@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Pause_Menu : MonoBehaviour
 {
-    public static bool GameIsPaused = false;
+    public bool GameIsPaused = false;
     public GameObject pauseMenuUI;
 
     void Update()
@@ -27,13 +27,16 @@ public class Pause_Menu : MonoBehaviour
         pauseMenuUI.SetActive(false);
         Time.timeScale = 1f;
         GameIsPaused = false;
+        FindObjectOfType<AudioManager>().Play("Pause");
     }
 
     void Pause()
     {
         pauseMenuUI.SetActive(true);
         Time.timeScale = 0f;
+        Debug.Log(Time.timeScale);
         GameIsPaused = true;
+        FindObjectOfType<AudioManager>().Play("UnPause");
     }
 
 }

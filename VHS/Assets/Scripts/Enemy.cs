@@ -19,6 +19,8 @@ public class Enemy : MonoBehaviour
     private int currentHealth;
     private float nextAttack;
 
+    public Pause_Menu pause;
+
 
     public float minHeight, maxHeight;
     public int maxHealth;
@@ -48,7 +50,7 @@ public class Enemy : MonoBehaviour
 
 void Update()
     {
-        
+
         onGround = Physics.Linecast(transform.position, groundCheck.position, 1<<LayerMask.NameToLayer("Ground"));        
         anim.SetBool("Dead", isDead);
         facingRight = (target.position.x < transform.position.x) ? false : true;

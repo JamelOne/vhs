@@ -20,11 +20,12 @@ public class Especial_PB : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(Input.GetKeyDown(KeyCode.H)){
+        if(Input.GetKeyDown(KeyCode.D)){
             if(info.specialGauge >= gaugeControl){
                 info.specialGauge -= gaugeControl;
                 info.healthDoMalandro(lifeSurplus);
                 playerPos.position = checkpoint.lastCheckPointPos;
+                FindObjectOfType<AudioManager>().Play("Rewind");
             }
         }
     }

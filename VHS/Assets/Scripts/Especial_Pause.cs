@@ -18,6 +18,7 @@ public class Especial_Pause : MonoBehaviour
             {
                 especialPause = true;
                 player.specialGauge = player.specialGauge - gaugeNeeded;
+                FindObjectOfType<AudioManager>().Play("E_Pause");
             }
                 
             else

@@ -6,7 +6,8 @@ using UnityEngine;
 public class MenuControl : MonoBehaviour
 {
     public string nextScene;
-    
+
+
     public void changeScene () {
         SceneManager.LoadScene(nextScene);
     }
@@ -15,4 +16,8 @@ public class MenuControl : MonoBehaviour
         Application.Quit();
     }
 
+    void Awake()
+    {
+        FindObjectOfType<AudioManager>().Play("MusicaTema");
+    }
 }

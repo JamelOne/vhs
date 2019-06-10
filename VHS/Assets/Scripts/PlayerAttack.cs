@@ -28,10 +28,13 @@ public class PlayerAttack : MonoBehaviour
         if(enemy!=null)
         {
             enemy.TookDamage(damage);
+            FindObjectOfType<AudioManager>().Play("Punch");
         }
       if(player!=null){
           player.takeDmg(damage);
-      }
+          FindObjectOfType<AudioManager>().Play("Punch");
+
+        }
       
     }
 }

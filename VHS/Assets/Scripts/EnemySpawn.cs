@@ -25,7 +25,7 @@ public class EnemySpawn : MonoBehaviour
     {
         if(currentEnemies>=numberOfEnemies){
             int enemies=FindObjectsOfType<Enemy>().Length;
-            if(enemies<=0){
+            if(enemies<=1){
                 FindObjectOfType<CameraFollow>().maxXAndY.x=200;
                 gameObject.SetActive(false);
                 gm.lastCheckPointPos = playerPos.position; 

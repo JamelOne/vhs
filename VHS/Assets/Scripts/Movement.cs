@@ -51,7 +51,8 @@ public class Movement : MonoBehaviour
         groundCheck = gameObject.transform.Find("GroundCheck");
         currentSpeed = velocidade;
         currentHealth = playerHealth;
-        
+        FindObjectOfType<AudioManager>().Play("Cenario1");
+
     }
 
 
@@ -195,4 +196,5 @@ public class Movement : MonoBehaviour
         Time.timeScale = 1f;
         DeathUI = false;
     }
+
 }
