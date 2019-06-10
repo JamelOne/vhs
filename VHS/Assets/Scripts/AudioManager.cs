@@ -2,9 +2,9 @@
 using UnityEngine;
 using System;
 
-
 public class AudioManager : MonoBehaviour
 {
+
     public Sound[] sounds;
 
 
@@ -30,6 +30,7 @@ public class AudioManager : MonoBehaviour
         if (s == null)
         {
             Debug.LogWarning("Música: " + name + " não existe!");
+            return;
         }
             
         s.source.Play();
@@ -38,6 +39,7 @@ public class AudioManager : MonoBehaviour
 
     void Start()
     {
-        // Colocar aqui a música tema do cenário -> Play("NomeMusica");
+
     }
+
 }

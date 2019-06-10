@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+
 public class Especial_FF : MonoBehaviour
 {
     public Movement player;
@@ -16,6 +17,7 @@ public class Especial_FF : MonoBehaviour
             if(player.specialGauge >= gaugeNeeded)
             {
                 especial_FF = true;
+                FindObjectOfType<AudioManager>().Play("FastFoward");
                 player.specialGauge = player.specialGauge - gaugeNeeded;
             }
         }

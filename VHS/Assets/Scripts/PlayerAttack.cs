@@ -23,15 +23,22 @@ public class PlayerAttack : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         Enemy enemy = other.GetComponent<Enemy>();
+        Enemy1 boss=other.GetComponent<Enemy1>();
         Movement player = other.GetComponent<Movement>();
 
         if(enemy!=null)
         {
             enemy.TookDamage(damage);
+            FindObjectOfType<AudioManager>().Play("Punch");
         }
       if(player!=null){
           player.takeDmg(damage);
-      }
-      
+          FindObjectOfType<AudioManager>().Play("Punch");
+
+        }
+      if(boss!=null)
+        {
+            boss.TookDamage(damage);
+        }
     }
 }
