@@ -32,7 +32,7 @@ public class Enemy1 : MonoBehaviour
 
     public int pontuacaoPorInimigo = 100;
 
-    
+    public GameObject vitoria;
 
 
 
@@ -134,6 +134,7 @@ public void TookDamage(int damage){
             player.specialGauge = player.specialGauge + gaugeGain;
             player.pontuacaoTotal = player.pontuacaoTotal + pontuacaoPorInimigo;
             isDead=true;
+            vitoria.SetActive(true);
             rb.AddRelativeForce(new Vector3(-3,5,0),ForceMode.Impulse);
         }
     }

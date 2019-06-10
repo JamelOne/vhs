@@ -27,7 +27,6 @@ public class Especial_Pause : MonoBehaviour
             if (player.specialGauge >= gaugeNeeded)
             {
                 especialPause = true;
-                anim.SetBool("Pause",especialPause);
                 player.specialGauge = player.specialGauge - gaugeNeeded;
                 FindObjectOfType<AudioManager>().Play("E_Pause");
             }
