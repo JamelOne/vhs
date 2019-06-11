@@ -74,7 +74,8 @@ public class Movement : MonoBehaviour
         {
             Debug.Log("YOU'RE DEAD");
             isDead = true;
-            transform.position = gm.lastCheckPointPos;
+            SceneManager.LoadScene("MenuInicial");
+            //transform.position = gm.lastCheckPointPos;
         }
         if(isDead == true){
             currentHealth = 10;

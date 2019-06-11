@@ -10,7 +10,7 @@ public class SliderUse : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        gauge = GameObject.FindWithTag("Player").GetComponent<Movement>();
+        gauge = GameObject.FindGameObjectWithTag("Player").GetComponent<Movement>();
     }
 
     // Update is called once per frame
